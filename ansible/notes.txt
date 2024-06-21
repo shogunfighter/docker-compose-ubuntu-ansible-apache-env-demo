@@ -50,3 +50,14 @@ Make sure the docker files are in the same network
 
 # docker network is prefixed in this format: ${PROJECT_NAME}${%s}
 $ docker network inspect docker_my_network
+
+
+-----------------
+
+Push this code to the master machine: (docker-ubuntu-master-1)
+
+You can push files here: 
+/home/user/ansible
+
+Then you can run this command:
+$ ansible-playbook -i /home/user/ansible/hosts/hosts /home/user/ansible/playbook/install_apache.yml
