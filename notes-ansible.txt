@@ -1,0 +1,1 @@
+ansible-playbook -i /home/user/ansible/hosts/hosts /home/user/ansible/playbook/install_apache.yml

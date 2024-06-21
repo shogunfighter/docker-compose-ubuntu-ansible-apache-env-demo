@@ -1,0 +1,14 @@
+{
+  "name": "docker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docker-compose:ubuntu:machine-builder": "docker-compose --file docker-compose-machine-builder.yml --env-file .env build",
+    "docker-compose:main:up": "docker-compose --file docker-compose.yml --env-file .env up --remove-orphans",
+    "docker-compose:main:down": "docker-compose down"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

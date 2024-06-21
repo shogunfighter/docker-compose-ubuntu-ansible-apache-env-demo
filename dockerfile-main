@@ -1,0 +1,28 @@
+FROM ubuntu
+
+ARG MAIN_MACHINE_SSH_PASSWORD
+
+# --- SSH:start ---
+# Install SSH server
+RUN apt-get update && apt-get install -y openssh-server
+RUN mkdir /var/run/sshd
+
+# Configure SSH
+RUN echo "root:$MAIN_MACHINE_SSH_PASSWORD" | chpasswd
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
+# --- SSH:end ---
+
+# --- Ansible:start ---
+# Install Ansible
+RUN apt-get install -y software-properties-common && \
+    apt-add-repository --yes --update ppa:ansible/ansible && \
+    apt-get update -y && \
+    apt-get install -y ansible
+# --- Ansible:end ---
+
+# Expose SSH port
+EXPOSE 22
+
+CMD ["/usr/sbin/sshd", "-D"]
+

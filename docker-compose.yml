@@ -1,0 +1,43 @@
+version: '3'
+services:
+
+  ubuntu-master:
+    image: docker-ubuntu-main-machine
+    ports:
+      - "2222:22"
+      - "8080:80"
+    volumes:
+      - os-data:/data
+    env_file:
+      - .env
+    networks:
+      - my_network
+
+  ubuntu-slave1:
+    image: docker-ubuntu-common-machine
+    ports:
+      - "2223:22"
+      - "8081:80"
+    volumes:
+      - os-data:/data
+    env_file:
+      - .env
+    networks:
+      - my_network
+
+  # ubuntu-slave2:
+  #   image: docker-ubuntu-common-machine
+  #   ports:
+  #     - "2224:22"
+  #     - "8082:80"
+  #   volumes:
+  #     - os-data:/data
+  #   env_file:
+  #     - .env
+
+volumes:
+  os-data:
+
+networks:
+  my_network:
+    driver: bridge

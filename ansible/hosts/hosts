@@ -1,0 +1,4 @@
+[common_machine]
+# ubuntu_slave1 ansible_host=192.168.48.2 ansible_user=root ansible_password=456
+docker-ubuntu-slave1-1
+

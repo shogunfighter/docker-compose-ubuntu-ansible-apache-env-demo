@@ -1,0 +1,29 @@
+version: '3'
+services:
+
+  # ubuntu machine with ansible
+  ubuntu-main-machine:
+    build:
+      context: .
+      dockerfile: ./dockerfile-main
+      args:
+        - MAIN_MACHINE_SSH_PASSWORD=${MAIN_MACHINE_SSH_PASSWORD}
+    # ports:
+    #   - "2222:22"
+    #   - "8080:80"
+    # volumes:
+    #   - os-data:/data
+    env_file:
+      - .env
+
+  ubuntu-common-machine:
+    build:
+      context: .
+      dockerfile: ./dockerfile-common
+      args:
+        - COMMON_MACHINE_SSH_PASSWORD=${COMMON_MACHINE_SSH_PASSWORD}
+    env_file:
+      - .env
+
+# volumes:
+#   os-data:

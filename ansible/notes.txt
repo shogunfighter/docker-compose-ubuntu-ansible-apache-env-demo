@@ -1,0 +1,52 @@
+In Ansible, the typical file structure for organizing your playbooks, inventory files, and other related files is as follows:
+
+
+ansible/
+├── hosts
+├── playbooks/
+│   ├── playbook1.yml
+│   ├── playbook2.yml
+│   └── ...
+├── roles/
+│   ├── role1/
+│   │   ├── tasks/
+│   │   │   └── main.yml
+│   │   ├── files/
+│   │   ├── templates/
+│   │   ├── vars/
+│   │   │   └── main.yml
+│   │   └── ...
+│   ├── role2/
+│   │   ├── tasks/
+│   │   ├── files/
+│   │   ├── templates/
+│   │   ├── vars/
+│   │   └── ...
+│   └── ...
+└── ...
+
+Here's a breakdown of the files and directories in this structure:
+
+hosts: The inventory file that lists the hosts or machines you want to manage.
+
+playbooks/: A directory where you store your playbooks. Each playbook is a YAML file that defines a set of tasks to be executed on the target hosts.
+
+playbooks/playbook1.yml, playbooks/playbook2.yml, etc.: Individual playbooks that define the tasks to be executed.
+
+roles/: A directory where you organize your Ansible roles. A role is a reusable collection of tasks, variables, templates, and files that can be used across multiple playbooks.
+
+
+
+----------------
+
+
+
+# docker images is prefixed in this format: ${PROJECT_NAME}-${docker_container_name}-${docker instance}
+docker-ubuntu-slave1-1
+docker-ubuntu-master-1
+
+
+Make sure the docker files are in the same network
+
+# docker network is prefixed in this format: ${PROJECT_NAME}${%s}
+$ docker network inspect docker_my_network
